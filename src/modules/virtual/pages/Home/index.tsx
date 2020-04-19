@@ -6,15 +6,18 @@ import Lights from "../../components/Lights";
 import Environment from "../../components/Environment";
 
 // Styled Components
-import { CanvasFlex } from "./styled";
+import { CanvasFlex, FixedLogo } from "./styled";
 
 const Home = () => {
   return (
-    <CanvasFlex>
-      <Cubes />
-      <Lights />
-      <Environment />
-    </CanvasFlex>
+    <>
+      <FixedLogo src="images/logo.png" alt="GrawLab" />
+      <CanvasFlex>
+        <Cubes />
+        <Lights />
+        <Environment />
+      </CanvasFlex>
+    </>
   );
 };
 
