@@ -10,17 +10,15 @@ export const CanvasFlex = styled(Canvas)`
 `;
 
 export const FixedLogo = styled.img`
-    height: 10vh;
-    width: auto;
+  height: 10vh;
+  width: auto;
 
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    padding: 12px;
-    margin-top: 0px;
-    
-    opacity: .6;
-    z-index: 999;
-}
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  padding: 12px;
+  margin-top: 0px;
 
+  opacity: 0.6;
+  z-index: 999;
 `;
