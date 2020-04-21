@@ -4,6 +4,7 @@ import React from "react";
 import Cubes from "../../components/Cubes";
 import Lights from "../../components/Lights";
 import Environment from "../../components/Environment";
+import FixedContact from "../../components/FixedContact";
 
 // Styled Components
 import { CanvasFlex, FixedLogo } from "./styled";
@@ -17,6 +18,7 @@ const Home = () => {
         <Lights />
         <Environment />
       </CanvasFlex>
+      <FixedContact />
     </>
   );
 };

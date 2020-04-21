@@ -74,7 +74,7 @@ export default () => {
       onPointerOver={(e) => onHover(e, true)}
       onPointerOut={(e) => onHover(e, false)}
     >
-      <boxBufferGeometry attach="geometry" args={[0.047, 0.5, 0.29]} />
+      <octahedronGeometry attach="geometry" args={[0.2]} />
       <meshStandardMaterial
         attach="material"
         color={color}

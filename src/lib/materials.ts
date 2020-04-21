@@ -1,6 +1,6 @@
 import { Color } from "three";
 
-const colors = {
+const materials = {
   white: new Color(),
   primary: new Color(0x1ec6c1),
   secondary: new Color(0xb338f4),
@@ -8,4 +8,4 @@ const colors = {
   light: new Color(0xfff1ef),
 };
 
-export default colors;
+export default materials;
