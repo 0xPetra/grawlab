@@ -13,7 +13,7 @@ export default () => {
         color={colors.orange}
         attach="material"
         side={BackSide}
-        // metalness={0.4}
+        metalness={0.4}
       />
     </mesh>
   );
