@@ -6,6 +6,7 @@ const materials = {
   secondary: new Color(0xb338f4),
   orange: new Color(0xd2452b),
   light: new Color(0xfff1ef),
+  black: new Color(0x222222),
 };
 
 export default materials;

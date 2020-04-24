@@ -21,7 +21,7 @@ export const Anchor = styled.a<AnchorProps>`
 
   opacity: 1;
   z-index: 999;
-  font-size: 24px;
+  font-size: 30px;
   color: ${(props) => (props.isHovered ? colors.white : colors.primary)};
 `;
 
@@ -41,11 +41,26 @@ export const EmailWrapper = styled(animated.div)`
 `;
 
 export const Email = styled.p`
-  font-size: 13px;
+  font-size: 18px;
   height: 24px;
   font-family: "Titillium Web", sans-serif;
   text-transform: uppercase;
 
   margin-block-end: 0em;
   margin-block-start: 0em;
+`;
+
+export const FixeImage = styled.img`
+  height: 25vh;
+  width: auto;
+
+  position: fixed;
+  left: 30%;
+  bottom: 40%;
+  margin-bottom: -40px;
+  justify-self: center;
+
+  /* opacity: 0.6; */
+  opacity: 0.7;
+  z-index: 999;
 `;
