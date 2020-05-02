@@ -31,31 +31,20 @@ declare global {
 
 export default React.memo(() => {
   // Hooks
-  // TODO: See if we need to add factor in some use case
-  // const { factor } = useSpring({ factor: 1 }); // Add   // `hovered ? 1.1 :` ?????
   const { gl, scene, camera, size } = useThree();
   const composer = useRef(null);
   useEffect(() => void composer.current.setSize(size.width, size.height), [
     size,
   ]);
+
   // This takes over as the main render-loop (when 2nd arg is set to true)
   useFrame(() => composer.current.render(), 1);
-
-  // Handlers
-  const triggerHandler = () => {
-    return 10000;
-  };
 
   return (
     <effectComposer ref={composer} args={[gl]}>
       <renderPass attachArray="passes" args={[scene, camera]} />
-      <glitchPass
-        attachArray="passes"
-        renderToScreen
-        generateTrigger={triggerHandler}
-      />
       {/* TODO: See if we need to add factor in some use case */}
-      {/* <a.glitchPass attachArray="passes" renderToScreen factor={factor} /> */}
+      <glitchPass attachArray="passes" renderToScreen goWild />
     </effectComposer>
   );
 });

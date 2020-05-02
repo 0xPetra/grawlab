@@ -1,93 +1,85 @@
-import React, { Suspense, useRef } from "react";
+import React, { Suspense, useState, useEffect, useRef } from "react";
 import { useSpring } from "react-spring/three";
-import { extend, useFrame, useThree, ReactThreeFiber } from "react-three-fiber";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
 // // Components
+import Controls from "../../components/Controls";
 import Octahedron from "../../components/Octahedron";
 import Glitch from "../../components/Glitch";
 import Lights from "../../components/Lights";
 import Environment from "../../components/Environment";
-import FixedContact from "../../components/FixedContact";
+import FixedContent from "../../components/FixedContent";
 
 // // Styled Components
-import { CanvasFlex, FixedLogo } from "./styled";
+import { CanvasFlex } from "./styled";
 
-// Orbit COntrols adapter
-extend({ OrbitControls });
+// Constants
+import colors from "../../../../lib/materials";
+import house from "../../../../assets/images/testressesenta.jpeg";
+import universe from "../../../../assets/images/universe.jpeg";
+import tron from "../../../../assets/images/360world.jpg";
 
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      orbitControls: ReactThreeFiber.Object3DNode<
-        OrbitControls,
-        typeof OrbitControls
-      >;
+const scenes = [
+  {
+    background: house,
+    color: colors.orange,
+  },
+  {
+    background: universe,
+    color: colors.primary,
+  },
+  {
+    background: tron,
+    color: colors.secondary,
+  },
+];
+
+function useInterval(callback, delay) {
+  const savedCallback = useRef(null);
+
+  // Remember the latest callback.
+  useEffect(() => {
+    savedCallback.current = callback;
+  }, [callback]);
+
+  // Set up the interval.
+  useEffect(() => {
+    function tick() {
+      savedCallback.current();
     }
-  }
+    if (delay !== null) {
+      let id = setInterval(tick, delay);
+      return () => clearInterval(id);
+    }
+  }, [delay]);
 }
-
-const Controls = (props) => {
-  const { camera, gl } = useThree();
-  const ref = useRef(null);
-  useFrame(() => ref.current.update());
-  return (
-    <orbitControls
-      ref={ref}
-      target={[0, 0, 0]}
-      {...props}
-      args={[camera, gl.domElement]}
-    />
-  );
-};
-
-// function Scene({ top, mouse }) {
-//   const { size } = useThree();
-//   const scrollMax = size.height * 4.5;
-//   return (
-//     <>
-//       <a.spotLight
-//         intensity={1.2}
-//         color="white"
-//         position={mouse.interpolate((x, y) => [x / 100, -y / 100, 6.5])}
-//       />
-//       <Effects factor={top.interpolate([0, 150], [1, 0])} />
-//       <Background
-//         color={top.interpolate(
-//           [0, scrollMax * 0.25, scrollMax * 0.8, scrollMax],
-//           ["#27282F", "#247BA0", "#70C1B3", "#f8f3f1"]
-//         )}
-//       />
-//       <Stars position={top.interpolate((top) => [0, -1 + top / 20, 0])} />
-//       <Images top={top} mouse={mouse} scrollMax={scrollMax} />
-//       <Text
-//         opacity={top.interpolate([0, 200], [1, 0])}
-//         position={top.interpolate((top) => [0, -1 + top / 200, 0])}
-//       >
-//         lorem
-//       </Text>
-//       <Text
-//         position={top.interpolate((top) => [
-//           0,
-//           -20 + ((top * 10) / scrollMax) * 2,
-//           0,
-//         ])}
-//         color="black"
-//         fontSize={150}
-//       >
-//         Ipsum
-//       </Text>
-//     </>
-//   );
-// }
 
 const Home = () => {
   // Hooks
-  const [{ top, mouse }, set] = useSpring(() => ({ top: 0, mouse: [0, 0] }));
+  const [delayGlitch, setDelayGlitch] = useState(4500);
+  // const [delayGlitchEnd, setDelayGlitchEnd] = useState(null);
+  const [delaySwitch, setDelaySwitch] = useState(null);
+  let [count, setCount] = useState(0);
+  let [isGlitchEnabled, setGlitch] = useState(false);
+
+  useInterval(async () => {
+    await setGlitch(true);
+    setDelaySwitch(500);
+  }, delayGlitch);
+
+  useInterval(async () => {
+    count === 2 ? setCount(0) : setCount(count + 1);
+    setDelayGlitch(4500);
+    setDelaySwitch(null);
+    // setDelayGlitchEnd(200);
+    await setGlitch(false);
+  }, delaySwitch);
+
+  // useInterval(async () => {
+  //   setDelayGlitchEnd(null);
+  // }, delayGlitchEnd);
 
   return (
-    <>
-      <FixedLogo src="images/logo.png" alt="GrawLab" />
+    <FixedContent>
       <CanvasFlex
         style={{ boxSizing: "border-box" }}
         camera={{ position: [0, 0, 0.1] }}
@@ -101,14 +93,13 @@ const Home = () => {
           rotateSpeed={-0.5}
         />
         <Octahedron />
-        <Glitch />
+        {isGlitchEnabled && <Glitch />}
         <Lights />
         <Suspense fallback={null}>
-          <Environment />
+          <Environment animation={scenes[count]} />
         </Suspense>
       </CanvasFlex>
-      <FixedContact />
-    </>
+    </FixedContent>
   );
 };
 

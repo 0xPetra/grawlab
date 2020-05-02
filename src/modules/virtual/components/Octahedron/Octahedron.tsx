@@ -13,6 +13,7 @@ import colors from "../../../../lib/materials";
 
 export default () => {
   const mesh: any = useRef();
+
   const time = useRef(0);
 
   const [isHovered, setIsHovered] = useState(false);
