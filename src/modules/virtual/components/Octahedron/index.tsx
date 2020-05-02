@@ -8,10 +8,10 @@ export default () => {
   const group: any = useRef();
 
   useFrame(() => {
-    group.current.rotation.y += 0.005;
+    group.current.rotation.y += 0.003;
   });
 
-  const nodesCubes = map(new Array(150), (el, i) => {
+  const nodesCubes = map(new Array(50), (el, i) => {
     return <Octahedron key={i} />;
   });
 
