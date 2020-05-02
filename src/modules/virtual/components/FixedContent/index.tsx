@@ -26,8 +26,8 @@ const FixedContent = (props) => {
 
   return (
     <>
-      <FixedLogo src="images/logo.png" alt="GrawLab" />
-      <FixeImage src="images/welcome.png" alt="GrawLab" />
+      <FixedLogo src={"images/logo.png"} alt="GrawLab" />
+      <FixeImage src={props.title} alt="GrawLab" />
       {props.children}
       <Anchor
         href="mailto:rodrigo@grawlab.com?subject=Hi%20there%20from%20the%20landing"

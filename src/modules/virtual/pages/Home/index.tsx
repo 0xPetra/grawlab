@@ -1,5 +1,4 @@
-import React, { Suspense, useState, useEffect, useRef } from "react";
-import { useSpring } from "react-spring/three";
+import React, { Suspense, useState } from "react";
 
 // // Components
 import Controls from "../../components/Controls";
@@ -14,49 +13,48 @@ import { CanvasFlex } from "./styled";
 
 // Constants
 import colors from "../../../../lib/materials";
-import house from "../../../../assets/images/testressesenta.jpeg";
-import universe from "../../../../assets/images/universe.jpeg";
-import tron from "../../../../assets/images/360world.jpg";
+
+// Backgrounds
+import universOne from "../../../../assets/images/universe_1.png";
+import universeTwo from "../../../../assets/images/universe_2.png";
+import universeThree from "../../../../assets/images/universe_3.png";
+import universeFour from "../../../../assets/images/universe_4.png";
+
+// Titles
+import titleOne from "../../../../assets/images/title_1.png";
+import titleTwo from "../../../../assets/images/title_2.png";
+import titleThree from "../../../../assets/images/title_3.png";
+import titlFour from "../../../../assets/images/title_4.png";
+
+// Hooks
+import useInterval from "../../../../lib/hooks/useInterval";
 
 const scenes = [
   {
-    background: house,
+    background: universOne,
     color: colors.orange,
+    title: titleOne,
   },
   {
-    background: universe,
-    color: colors.primary,
-  },
-  {
-    background: tron,
+    background: universeTwo,
     color: colors.secondary,
+    title: titleTwo,
+  },
+  {
+    background: universeThree,
+    color: colors.orange,
+    title: titleThree,
+  },
+  {
+    background: universeFour,
+    color: colors.primary,
+    title: titlFour,
   },
 ];
-
-function useInterval(callback, delay) {
-  const savedCallback = useRef(null);
-
-  // Remember the latest callback.
-  useEffect(() => {
-    savedCallback.current = callback;
-  }, [callback]);
-
-  // Set up the interval.
-  useEffect(() => {
-    function tick() {
-      savedCallback.current();
-    }
-    if (delay !== null) {
-      let id = setInterval(tick, delay);
-      return () => clearInterval(id);
-    }
-  }, [delay]);
-}
 
 const Home = () => {
   // Hooks
   const [delayGlitch, setDelayGlitch] = useState(4500);
-  // const [delayGlitchEnd, setDelayGlitchEnd] = useState(null);
   const [delaySwitch, setDelaySwitch] = useState(null);
   let [count, setCount] = useState(0);
   let [isGlitchEnabled, setGlitch] = useState(false);
@@ -70,16 +68,11 @@ const Home = () => {
     count === 2 ? setCount(0) : setCount(count + 1);
     setDelayGlitch(4500);
     setDelaySwitch(null);
-    // setDelayGlitchEnd(200);
     await setGlitch(false);
   }, delaySwitch);
 
-  // useInterval(async () => {
-  //   setDelayGlitchEnd(null);
-  // }, delayGlitchEnd);
-
   return (
-    <FixedContent>
+    <FixedContent title={scenes[count].title}>
       <CanvasFlex
         style={{ boxSizing: "border-box" }}
         camera={{ position: [0, 0, 0.1] }}
@@ -92,10 +85,10 @@ const Home = () => {
           autoRotate
           rotateSpeed={-0.5}
         />
-        <Octahedron />
         {isGlitchEnabled && <Glitch />}
         <Lights />
         <Suspense fallback={null}>
+          <Octahedron />
           <Environment animation={scenes[count]} />
         </Suspense>
       </CanvasFlex>

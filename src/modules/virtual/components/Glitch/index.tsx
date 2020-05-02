@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import { apply as extendSpring, useSpring } from "react-spring/three";
+import { apply as extendSpring } from "react-spring/three";
 import {
   extend as extendThree,
   useFrame,

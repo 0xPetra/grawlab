@@ -16,6 +16,7 @@ export const FixedLogo = styled.img`
   width: auto;
 
   position: fixed;
+  pointer-events: none;
   top: 10px;
   left: 10px;
   padding: 12px;
@@ -65,6 +66,7 @@ export const FixeImage = styled.img`
   width: auto;
 
   position: fixed;
+  pointer-events: none;
   left: 30%;
   bottom: 40%;
   margin-bottom: -40px;

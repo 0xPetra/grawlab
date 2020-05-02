@@ -6,13 +6,20 @@ import React, {
   useCallback,
 } from "react";
 import { random } from "lodash";
-import { useFrame } from "react-three-fiber";
+import { useFrame, useLoader } from "react-three-fiber";
+import { TextureLoader } from "three";
 
 // Constants
 import colors from "../../../../lib/materials";
+import tron from "../../../../assets/images/universe_1.png";
+
+// TODO: integrate .dds textures
+// import tron from "../../../../assets/textures/hepatica_dxt3_mip.dds";
+// import { DDSLoader } from "three/examples/jsm/loaders/DDSLoader';
 
 export default () => {
   const mesh: any = useRef();
+  const texture = useLoader(TextureLoader, tron);
 
   const time = useRef(0);
 
@@ -75,10 +82,11 @@ export default () => {
       onPointerOver={(e) => onHover(e, true)}
       onPointerOut={(e) => onHover(e, false)}
     >
-      <octahedronGeometry attach="geometry" args={[0.2]} />
+      <octahedronGeometry attach="geometry" args={[0.1]} />
       <meshStandardMaterial
         attach="material"
         color={color}
+        map={texture}
         roughness={0.6}
         metalness={0.1}
       />
