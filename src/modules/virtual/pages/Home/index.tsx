@@ -65,7 +65,7 @@ const Home = () => {
   }, delayGlitch);
 
   useInterval(async () => {
-    count === 2 ? setCount(0) : setCount(count + 1);
+    count === 3 ? setCount(0) : setCount(count + 1);
     setDelayGlitch(4500);
     setDelaySwitch(null);
     await setGlitch(false);
@@ -92,6 +92,14 @@ const Home = () => {
           <Environment animation={scenes[count]} />
         </Suspense>
       </CanvasFlex>
+      {/* Preload Enviroments w/diff textures */}
+      <Suspense fallback={null}>
+        <div hidden={true}>
+          <Environment animation={scenes[1]} />
+          <Environment animation={scenes[2]} />
+          <Environment animation={scenes[3]} />
+        </div>
+      </Suspense>
     </FixedContent>
   );
 };
