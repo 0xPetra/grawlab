@@ -16,7 +16,7 @@ export default () => {
   return (
     <group>
       <FakeSphere />
-      <ambientLight intensity={0.9} />
+      <ambientLight intensity={0.3} />
       <pointLight intensity={1.12} position={[0, 0, 0]} />
     </group>
   );

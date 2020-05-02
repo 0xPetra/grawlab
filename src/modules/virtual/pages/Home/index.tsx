@@ -32,22 +32,22 @@ import useInterval from "../../../../lib/hooks/useInterval";
 const scenes = [
   {
     background: universOne,
-    color: colors.orange,
+    color: colors.primary,
     title: titleOne,
   },
   {
     background: universeTwo,
-    color: colors.secondary,
+    color: "",
     title: titleTwo,
   },
   {
     background: universeThree,
-    color: colors.orange,
+    color: "",
     title: titleThree,
   },
   {
     background: universeFour,
-    color: colors.primary,
+    color: "",
     title: titlFour,
   },
 ];

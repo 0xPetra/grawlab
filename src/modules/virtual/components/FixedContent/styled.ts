@@ -22,7 +22,7 @@ export const FixedLogo = styled.img`
   padding: 12px;
   margin-top: 0px;
 
-  opacity: 0.6;
+  opacity: 0.8;
   z-index: 999;
 `;
 
@@ -72,6 +72,6 @@ export const FixeImage = styled.img`
   margin-bottom: -40px;
   justify-self: center;
 
-  opacity: 0.7;
+  opacity: 0.8;
   z-index: 999;
 `;
