@@ -7,14 +7,7 @@ import { useSpring } from "react-spring";
 import useHover from "../../../../lib/hooks/useHover";
 
 // Styled Components
-import {
-  FixedLogo,
-  Envelope,
-  Anchor,
-  Email,
-  EmailWrapper,
-  FixeImage,
-} from "./styled";
+import { FixedLogo, Envelope, Anchor, Email, EmailWrapper } from "./styled";
 
 const FixedContent = (props) => {
   const { isHovered, hoverRef } = useHover();
@@ -27,7 +20,6 @@ const FixedContent = (props) => {
   return (
     <>
       <FixedLogo src={"images/logo.png"} alt="GrawLab" />
-      <FixeImage src={props.title} alt="GrawLab" />
       {props.children}
       <Anchor
         href="mailto:rodrigo@grawlab.com?subject=Hi%20there%20from%20the%20landing"
@@ -38,7 +30,7 @@ const FixedContent = (props) => {
       >
         <Envelope className="fa fa-envelope-o" />
         <EmailWrapper style={hoverStyle}>
-          <Email>rodrigo@grawlab.com</Email>
+          <Email>hello@grawlab.com</Email>
         </EmailWrapper>
       </Anchor>
     </>

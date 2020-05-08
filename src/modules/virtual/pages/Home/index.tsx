@@ -8,6 +8,9 @@ import Lights from "../../components/Lights";
 import Environment from "../../components/Environment";
 import FixedContent from "../../components/FixedContent";
 
+// FC Components
+import Titles from "../../components/Titles";
+
 // // Styled Components
 import { CanvasFlex } from "./styled";
 
@@ -20,12 +23,6 @@ import universeTwo from "../../../../assets/images/universe_2.png";
 import universeThree from "../../../../assets/images/universe_3.png";
 import universeFour from "../../../../assets/images/universe_4.png";
 
-// Titles
-import titleOne from "../../../../assets/images/title_1.png";
-import titleTwo from "../../../../assets/images/title_2.png";
-import titleThree from "../../../../assets/images/title_3.png";
-import titlFour from "../../../../assets/images/title_4.png";
-
 // Hooks
 import useInterval from "../../../../lib/hooks/useInterval";
 
@@ -33,22 +30,18 @@ const scenes = [
   {
     background: universOne,
     color: colors.primary,
-    title: titleOne,
   },
   {
     background: universeTwo,
     color: "",
-    title: titleTwo,
   },
   {
     background: universeThree,
     color: "",
-    title: titleThree,
   },
   {
     background: universeFour,
     color: "",
-    title: titlFour,
   },
 ];
 
@@ -69,10 +62,12 @@ const Home = () => {
     setDelayGlitch(4500);
     setDelaySwitch(null);
     await setGlitch(false);
+    // await setTextTransition(false);
   }, delaySwitch);
 
   return (
-    <FixedContent title={scenes[count].title}>
+    <FixedContent>
+      <Titles count={count} />
       <CanvasFlex
         style={{ boxSizing: "border-box" }}
         camera={{ position: [0, 0, 0.1] }}
