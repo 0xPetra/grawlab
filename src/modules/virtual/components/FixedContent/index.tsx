@@ -3,11 +3,21 @@ import React from "react";
 // Animation
 import { useSpring } from "react-spring";
 
+// Constants
+import panoramic from "../../../../assets/images/panoramic.gif";
+
 // Hooks
 import useHover from "../../../../lib/hooks/useHover";
 
 // Styled Components
-import { FixedLogo, Envelope, Anchor, Email, EmailWrapper } from "./styled";
+import {
+  FixedLogo,
+  FixedPanoramicIndicator,
+  Envelope,
+  Anchor,
+  Email,
+  EmailWrapper,
+} from "./styled";
 
 const FixedContent = (props) => {
   const { isHovered, hoverRef } = useHover();
@@ -20,6 +30,9 @@ const FixedContent = (props) => {
   return (
     <>
       <FixedLogo src={"images/logo.png"} alt="GrawLab" />
+      {props.isPanoramicIndicator && (
+        <FixedPanoramicIndicator src={panoramic} alt="GrawLab" />
+      )}
       {props.children}
       <Anchor
         href="mailto:hello@grawlab.com?subject=Hi%20there%20from%20the%20landing"

@@ -32,6 +32,28 @@ export const FixedLogo = styled.img`
   z-index: 999;
 `;
 
+export const FixedPanoramicIndicator = styled.img`
+  height: auto;
+  width: 25vw;
+  margin-left: -25vw;
+
+  @media ${DEVICES.laptop} {
+    height: auto;
+    width: 12vw;
+    margin-left: -12vw;
+  }
+
+  position: fixed;
+  pointer-events: none;
+  bottom: 10px;
+  margin-bottom: 0px;
+  left: 50%;
+  padding: 12px;
+
+  opacity: 0.8;
+  z-index: 999;
+`;
+
 export const Anchor = styled.a<AnchorProps>`
   text-decoration: none !important;
   width: auto;

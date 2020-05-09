@@ -51,6 +51,7 @@ const Home = () => {
   const [delaySwitch, setDelaySwitch] = useState(null);
   let [count, setCount] = useState(0);
   let [isGlitchEnabled, setGlitch] = useState(false);
+  let [isPanoramicIndicator, setPanoramicIndicator] = useState(true);
 
   // Sets glitch to true and set the delay 500ms from now
   useInterval(async () => {
@@ -61,6 +62,7 @@ const Home = () => {
   // Set next glitch and deactivates switch
   useInterval(async () => {
     setDelayGlitch(4500);
+    setPanoramicIndicator(false);
     await setGlitch(false);
   }, delaySwitch);
 
@@ -71,7 +73,7 @@ const Home = () => {
   }, delaySwitch);
 
   return (
-    <FixedContent>
+    <FixedContent isPanoramicIndicator={isPanoramicIndicator}>
       <Titles count={count} />
       <CanvasFlex
         style={{ boxSizing: "border-box" }}

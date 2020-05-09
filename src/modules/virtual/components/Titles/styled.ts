@@ -17,20 +17,21 @@ interface ImageInterface {
 
 export const FixeImage = styled(animated.img)`
   height: auto;
-  width: 120vw;
+  width: 90vw;
+  margin-left: -45vw;
+  left: 50%;
 
   opacity: 0.8;
   z-index: 999;
   position: fixed;
   pointer-events: none;
-  left: 15vw;
   bottom: 40vh;
   justify-self: center;
 
   @media ${DEVICES.laptop} {
-    left: 35vw;
+    width: 30vw;
+    margin-left: -15vw;
     height: auto;
-    width: 40vw;
   }
 
   text-shadow: 0px 2px 40px #00000020, 0px 2px 5px #00000030;
