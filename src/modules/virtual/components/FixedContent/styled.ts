@@ -35,12 +35,12 @@ export const FixedLogo = styled.img`
 export const FixedPanoramicIndicator = styled.img`
   height: auto;
   width: 25vw;
-  margin-left: -25vw;
+  margin-left: -12.5vw;
 
   @media ${DEVICES.laptop} {
     height: auto;
     width: 12vw;
-    margin-left: -12vw;
+    margin-left: -6vw;
   }
 
   position: fixed;
