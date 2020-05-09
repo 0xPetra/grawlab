@@ -52,17 +52,22 @@ const Home = () => {
   let [count, setCount] = useState(0);
   let [isGlitchEnabled, setGlitch] = useState(false);
 
+  // Sets glitch to true and set the delay 500ms from now
   useInterval(async () => {
     await setGlitch(true);
     setDelaySwitch(500);
   }, delayGlitch);
 
+  // Set next glitch and deactivates switch
+  useInterval(async () => {
+    setDelayGlitch(4500);
+    await setGlitch(false);
+  }, delaySwitch);
+
+  // Increases or resets the counter
   useInterval(async () => {
     count === 3 ? setCount(0) : setCount(count + 1);
-    setDelayGlitch(4500);
     setDelaySwitch(null);
-    await setGlitch(false);
-    // await setTextTransition(false);
   }, delaySwitch);
 
   return (

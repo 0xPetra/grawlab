@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { animated } from "react-spring";
 
 // Constants
+import { DEVICES } from "../../../../lib/devices";
 import colors from "../../../../lib/colors";
 
 // Interface
@@ -12,8 +13,13 @@ interface AnchorProps {
 }
 
 export const FixedLogo = styled.img`
-  height: 10vh;
-  width: auto;
+  height: auto;
+  width: 25vw;
+
+  @media ${DEVICES.laptop} {
+    height: auto;
+    width: 12vw;
+  }
 
   position: fixed;
   pointer-events: none;
@@ -59,19 +65,13 @@ export const Email = styled.p`
 
   margin-block-end: 0em;
   margin-block-start: 0em;
-`;
 
-export const FixeImage = styled.img`
-  height: 25vh;
-  width: auto;
+  .desktop {
+    flex: 1;
+    display: none;
 
-  position: fixed;
-  pointer-events: none;
-  left: 30%;
-  bottom: 40%;
-  margin-bottom: -40px;
-  justify-self: center;
-
-  opacity: 0.8;
-  z-index: 999;
+    @media ${DEVICES.laptop} {
+      display: flex;
+    }
+  }
 `;

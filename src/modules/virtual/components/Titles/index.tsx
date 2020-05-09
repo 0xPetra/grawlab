@@ -31,7 +31,7 @@ const Titles = ({ count }) => {
   const transitions = useTransition(count, (p) => p, {
     from: { opacity: 0, transform: "translate3d(100%,0,0)" },
     enter: { opacity: 0.7, transform: "translate3d(0%,0,0)" },
-    leave: { opacity: 0, transform: "translate3d(-50%,0,0)" },
+    leave: { opacity: 0, transform: "translate3d(-100%,0,0)" },
   });
 
   return (

@@ -22,7 +22,7 @@ const FixedContent = (props) => {
       <FixedLogo src={"images/logo.png"} alt="GrawLab" />
       {props.children}
       <Anchor
-        href="mailto:rodrigo@grawlab.com?subject=Hi%20there%20from%20the%20landing"
+        href="mailto:hello@grawlab.com?subject=Hi%20there%20from%20the%20landing"
         ref={hoverRef}
         target="_blank"
         rel="noopener noreferrer"
